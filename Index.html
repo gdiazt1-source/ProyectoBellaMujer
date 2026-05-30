@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELLA MUJER| Cosméticos Naturales</title>
+    
+    <!-- Fuentes de Google Fonts para un look elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES CSS (Para facilitar cambios de color) --- */
+        :root {
+            --primary-color: #d48c95; /* Rosa pastel elegante */
+            --primary-dark: #b56b75;
+            --secondary-color: #fdfbf7; /* Crema suave */
+            --text-color: #333333;
+            --accent-color: #c5a059; /* Dorado */
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Botón de menú móvil (oculto en escritorio) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION (Portada) --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(185, 108, 162, 0.3), rgba(191, 20, 145, 0.3)), url('https://i.pinimg.com/736x/9a/f3/d1/9af3d14bf66e8343da96434788210f82.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(228, 213, 213, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- SECCIÓN DE PRODUCTOS --- */
+        .products {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* --- SOBRE NOSOTROS --- */
+        .about {
+            background-color: var(--white);
+            padding: 4rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- CHATBOT DE ÁRBOL (ESTILOS) --- */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* Botón flotante para abrir/cerrar */
+        .chat-toggle-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .chat-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* La ventana del chat */
+        .chat-window {
+            width: 350px;
+            height: 450px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+            display: none; /* Oculto por defecto */
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h4 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .bot-msg {
+            background-color: #e0e0e0;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background-color: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-options {
+            padding: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            background-color: var(--white);
+        }
+
+        .option-btn {
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .option-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* En una versión real aquí agregaríamos menú JS */
+            .menu-toggle { display: block; }
+            .chat-window { width: 300px; right: 0; bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="logo">𝕭𝖊𝖑𝖑𝖆 𝕸𝖚𝖏𝖊𝖗</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#products">Productos</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle">☰</div>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>ʀᴇꜱᴀʟᴛᴀ ᴛᴜ ᴇꜱᴇɴᴄɪᴀ, ᴛᴏᴅᴏꜱ ʟᴏꜱ ᴅíᴀꜱ</h1>
+            <p>Cosméticos naturales diseñados para resaltar tu esencia.</p>
+            <button class="btn" onclick="('products').scrollIntoView({behavior: 'smooth'})">Ver Catálogo</button>
+        </div>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section id="products" class="products">
+        <h2 class="section-title">Nuestros Favoritos</h2>
+        <div class="product-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <img src="https://bairrodasaude.pt/cdn/shop/files/3337875578486.jpg?v=1749125669">
+                <div class="product-info">
+                    <h3>La Roche-Posay Toleriane Crema Sensible 40ml</h3>
+                    <p style="font-size: 0.9rem; color: #666;">La Roche-Posay Toleriane Sensitive Cream es un cuidado prebiótico, calmante e hidratante que calma, repara y protege la barrera cutánea y la barrera microbiana</p>
+                    <span class="price">Q250.00</span>
+                    <button class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Ver detalle</button>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <img src="https://bairrodasaude.pt/cdn/shop/files/3337875684101.jpg?v=1749119468" alt="Labial Mate">
+                <div class="product-info">
+                    <h3>Cerave Sa Crema Suavizante Asperezas 340ml</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Cerave SA La crema suavizante de rugosidades exfolia, suaviza y alisa eficazmente la piel seca, áspera y desigual, al tiempo que restaura la barrera cutánea.</p>
+                    <span class="price">Q150.00</span>
+                    <button class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Ver detalle</button>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <img src="https://bairrodasaude.pt/cdn/shop/files/3337875847292.jpg?v=1749138854&_gl=1*wkuphg*_up*MQ..*_ga*NTMwMjkwMjU4LjE3ODAxMTQyMjc.*_ga_EYTP440JQN*czE3ODAxMTQyMjUkbzEkZzEkdDE3ODAxMTQ0NTUkajUxJGwwJGgw" alt="Crema Ojos">
+                <div class="product-info">
+                    <h3>La Roche-Posay Anthelios UVMune 400 Fluido Invisible Control De Grasa SPF50+ 50ml</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Totalmente invisible con filtros contra los rayos UVA ultralargos, protegiendo intensamente la piel contra el daño celular profundo</p>
+                    <span class="price">Q200.00
+                    <button class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Ver detalle</button>
+                </div>
+            </div>
+    </section>
+    
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="about" class="about">
+        <div class="about-image">
+            <img src="https://i.pinimg.com/736x/6f/fd/1f/6ffd1f241d68cfb25ec049b97076108c.jpg" alt="Grupo de trabajo">
+        </div>
+        <div class="about-text">
+            <h2 class="section-title" style="margin-top: 0; text-align: left;">Filosofía Bella Mujerr</h2>
+            <p>En Bella Mujer  creemos que la belleza es un sentimiento, no solo un aspecto. Nuestros productos son 100% libres de crueldad, utilizando ingredientes orgánicos seleccionados de los mejores lugares del mundo.</p>
+            <br>
+            <p>Fundada en 2023, nuestra misión es empoderar a las mujeres a sentirse seguras de sí mismas cada mañana.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2023 Bella Mujer.  Todos los derechos reservados</p>
+        <p>Síguenos en Instagram, Facebook y TikTok.</p>
+    </footer>
+
+    <!-- WIDGET DE CHATBOT -->
+    <div class="chatbot-container">
+        <!-- Ventana del chat -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h4>Asistente Bella Mujer</h4>
+                <span style="cursor: pointer;" onclick="toggleChat()">✕</span>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Los mensajes se insertarán aquí con JS -->
+            </div>
+
+            <div class="chat-options" id="chatOptions">
+                <!-- Los botones de opción se insertarán aquí con JS -->
+            </div>
+        </div>
+
+        <!-- Botón flotante -->
+        <button class="chat-toggle-btn" onclick="toggleChat()">
+            💬
+        </button>
+    </div>
+
+    <!-- LÓGICA DEL CHATBOT -->
+    <script>
+        // --- Elementos del DOM ---
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatOptions = document.getElementById('chatOptions');
+
+        // --- Estado inicial ---
+        let isChatOpen = false;
+
+        // --- Árbol de decisiones del Bot ---
+        // Estructura simple: Pregunta -> Opciones -> Respuesta
+        
+        const botFlow = {
+            start: {
+                text: "¡Hola! Bienvenida a Bella Mujer.. ¿En qué puedo ayudarte hoy?",
+                options: [
+                    { label: "Ver Catálogo", next: "catalogo" },
+                    { label: "Información de Envíos", next: "envios" },
+                    { label: "Horarios de Atención", next: "horarios" }
+                ]
+            },
+            catalogo: {
+                text: "Tenemos 3 categorías principales. ¿Cuál te interesa?",
+                options: [
+                    { label: "Rostro", next: "rostro_resp" },
+                    { label: "Labios", next: "labios_resp" },
+                    { label: "Volver al inicio", next: "start" }
+                ]
+            },
+            rostro_resp: {
+                text: "Nuestra línea de rostro incluye sérumes y cremas hidratantes. ¡El más vendido Cerave Sa Crema Suavizante Asperezas 340ml !",
+                options: [{ label: "Gracias", next: "despedida" }]
+            },
+            labios_resp: {
+                text: "Para labios tenemos labiales mate y glosses de larga duración. Son libres de parabenos.",
+                options: [{ label: "Gracias", next: "despedida" }]
+            },
+            envios: {
+                text: "Realizamos envíos a todo el país. Son gratuitos en compras superiores a Q35.00.",
+                options: [{ label: "Entendido", next: "start" }]
+            },
+            horarios: {
+                text: "Estamos disponibles de Lunes a Viernes de 9:00 AM a 6:00 PM.",
+                options: [{ label: "Ok, gracias", next: "start" }]
+            },
+            despedida: {
+                text: "¡Qué tengas un hermoso día! Si tienes más dudas, estoy aquí.",
+                options: [{ label: "Inicio", next: "start" }]
+            }
+        };
+
+        // --- Funciones del Chat ---
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.classList.add('active');
+                // Si es la primera vez que se abre, iniciar conversación
+                if (chatMessages.children.length === 0) {
+                    loadStep('start');
+                }
+            } else {
+                chatWindow.classList.remove('active');
+            }
+        }
+
+        // Función para mostrar mensajes en pantalla
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message');
+            msgDiv.classList.add(sender === 'bot' ? 'bot-msg' : 'user-msg');
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            
+            // Auto-scroll al fondo
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Función para cargar un paso del "árbol"
+        function loadStep(stepKey) {
+            const step = botFlow[stepKey];
+            
+            // 1. Mostrar respuesta del bot
+            addMessage(step.text, 'bot');
+
+            // 2. Limpiar opciones anteriores
+            chatOptions.innerHTML = '';
+
+            // 3. Crear nuevos botones de opción
+            setTimeout(() => {
+                step.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.classList.add('option-btn');
+                    btn.textContent = opt.label;
+                    btn.onclick = () => handleUserClick(opt.label, opt.next);
+                    chatOptions.appendChild(btn);
+                });
+            }, 500); 
+        }
+
+        // Función cuando el usuario hace clic en una opción
+        function handleUserClick(label, nextStep) {
+            // 1. Mostrar lo que eligió el usuario
+            addMessage(label, 'user');
+            
+            // 2. Limpiar botones para evitar doble clic rápido
+            chatOptions.innerHTML = '';
+
+            // 3. Cargar la siguiente respuesta del bot
+            setTimeout(() => {
+                loadStep(nextStep);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
